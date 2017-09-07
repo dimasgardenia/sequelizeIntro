@@ -1,0 +1,2 @@
+# sequelizeIntro
+tugas hacktive8
