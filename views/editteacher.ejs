@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Teacher</title>
+  </head>
+  <body>
+    <form action="/teacher/edit/<%=data.id%>" method="post">
+      <label>First Name</label>
+      <input type="text" name="first_name" value="<%= data.first_name %>">
+      <label>Last Name</label>
+      <input type="text" name="last_name" value="<%= data.last_name %>">
+      <label>Email</label>
+      <input type="text" name="email" value="<%= data.email %>">
+      <select  name="SubjectId">
+        <% datasub.forEach(data=>{ %>
+          <option value="<%= data.id %>" selected><%= data.subject_name %></option>
+          <% }) %>
+      </select>
+      <button type="submit" name="submit">Submit</button>
+    </form>
+    <button type="button" name="button" href ='/teacher'>back to teacher</button>
+  </body>
+</html>

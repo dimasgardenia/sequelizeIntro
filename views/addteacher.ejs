@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add teacher</title>
+  </head>
+  <body>
+    <form  action="/teacher/add" method="post">
+      <label>First Name</label>
+      <input type="text" name="first_name" placeholder="please input teacher first name">
+      <label>Last Name</label>
+      <input type="text" name="last_name" placeholder="please input teacher last name">
+      <label>Email</label>
+      <input type="text" name="email" placeholder="please input teacher email">
+      <!-- <input type="hidden" name="SubjectId" value="1"> -->
+      <select name="SubjectId">
+        <% data.forEach(d=>{ %>
+          <option value="<%= d.id %>"><%= d.subject_name  %></option>
+          <% }) %>
+      </select>
+      <button type="submit">Submit</button>
+    </form>
+    <button type="button" name="button" href = "/teacher"> back to teacher </button>
+  </body>
+</html>

@@ -9,15 +9,14 @@ module.exports = function(sequelize, DataTypes) {
       isUnique: true,
       validate: {
         isEmail: true,
-        msg: "email must be on format"
+        //msg: "email must be on format"
       }
-    }
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
-  });
+    },
+    //StudentSubjectId: DataTypes.INTEGER
+  })
+  Student.associate = (models)=>{
+    Student.belongsToMany(models.Subject,{through: "StudentSubjectId"})
+  }
+
   return Student;
 };

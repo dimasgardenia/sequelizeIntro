@@ -6,10 +6,17 @@ router.get('/',(req,res)=>{
   model.Student.findAll()
   .then((data)=>{
     res.render('student',{data:data,err:false})
+    // res.send(data)
   })
 })
 
-router.post('/',(req,res)=>{
+router.get('/add',(req,res)=>{
+  model.Student.findAll().then((data)=>{
+    res.render('addstudent',{data:data})
+  })
+})
+
+router.post('/add',(req,res)=>{
   model.Student.create({
     first_name : req.body.first_name,
     last_name : req.body.last_name,
@@ -22,7 +29,7 @@ router.post('/',(req,res)=>{
     //res.render('student',{data:data,err:err})
     model.Student.findAll()
     .then((data)=>{
-      console.log(msg);
+      //console.log(data,'<< data');
       res.render('student',{data:data, err:msg})
     })
   })
@@ -58,6 +65,22 @@ router.get('/delete/:id',(req,res)=>{
       id: req.params.id
     }
   }).then(()=>{
+    res.redirect('/student')
+  })
+})
+
+router.get('/addsubject/:id',(req,res)=>{
+  model.Student.findById(req.params.id).then((data_students)=>{
+    model.Subject.findAll().then((data_subjects)=>{
+      res.render('addstudentsub',{data_students:data_students,data_subjects:data_subjects})
+    })
+  })
+})
+
+router.post('/addsubject/:id',(req,res)=>{
+  model.StudentSubject.create({StudentId: req.params.id,
+    SubjectId:req.body.SubjectId})
+    .then(()=>{
     res.redirect('/student')
   })
 })

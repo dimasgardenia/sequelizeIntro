@@ -7,7 +7,7 @@
   <body>
     <table border="1">
       <% if(err){ %>
-         <%= err %>
+          <h2>email already use</h2>
         <% } %>
       <tr>
         <th> ID </th>
@@ -31,21 +31,11 @@
           </td>
           <td><a href="/student/edit/<%= d.id %>"><button type="button" name="button">Edit</button></a></td>
           <td><a href="/student/delete/<%= d.id %>"><button type="button" name="button">Delete</button></a></td>
+          <td><a href="/student/addsubject/<%= d.id %>"><button type="button" name="button">Add Subject</button></a></td>
         </tr>
         <% }) %>
     </table>
+    <a href="/student/add">add student</a>
     <br>
-    <left>
-    <form action="/student" method="post">
-      <label>First Name</label>
-      <input type="text" name="first_name" placeholder="please input your first name">
-      <label>Last Name</label>
-      <input type="text" name="last_name" placeholder="please input your last name">
-      <label>Email</label>
-      <input type="text" name="email" placeholder="please input your email">
-      <br>
-      <button type="submit" name="submit">Submit</button>
-    </form>
-    <left>
   </body>
 </html>

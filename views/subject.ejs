@@ -7,11 +7,21 @@
   <body>
     <table border="1">
       <tr>
+        <th>Id</th>
         <th>Subject Name</th>
+        <th>Teacher name</th>
       </tr>
       <% data.forEach(d =>{ %>
         <tr>
+          <td><%= d.id %></td>
           <td><%= d.subject_name %></td>
+          <td>
+            <% d.Teachers.forEach((teacher) => { %>
+              <%= teacher.id %> <%= teacher.first_name %>
+              <br>
+            <% }) %>
+          </td>
+          <td><a href="/subject/enrolledstudents/<%= d.id %>"><button type="button" name="button">enrolled students</button></a></td>
         </tr>
         <% }) %>
     </table>
