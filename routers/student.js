@@ -2,6 +2,14 @@ const express = require('express')
 const router = express.Router()
 const model = require('../models')
 
+router.use((req,res, next)=>{
+  if(req.session.user.role == 'academic' || req.session.user.role == 'headmaster' || req.session.user.role == 'teacher'){
+    next();
+  }else{
+    res.send('you must login as academic or headmaster or teacher');
+  }
+})
+
 router.get('/',(req,res)=>{
   model.Student.findAll()
   .then((data)=>{

@@ -3,6 +3,14 @@ const router = express.Router()
 const model = require('../models')
 //console.log(model);
 
+router.use((req,res, next)=>{
+  if(req.session.user.role == 'headmaster'){
+    next();
+  }else{
+    res.send('you must login as headmaster');
+  }
+})
+
 router.get('/',(req,res)=>{
   model.Teacher.findAll({include : [model.Subject]}).then(function(data){
     //console.log(data, '<---');

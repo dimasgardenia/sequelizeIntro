@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sign Up</title>
+  </head>
+  <body>
+    <center>
+    <h1>Sign Up Here</h1>
+    <form action="/signup" method="post">
+      <label>Username</label>
+      <input type="text" name="username" placeholder="input your username">
+      <label>Password</label>
+      <input type="text" name="password" placeholder="input your username">
+      <select  name="role">
+          <option value="teacher">teacher</option>
+          <option value="academic">academic</option>
+          <option value="headmaster">headmaster</option>
+      </select>
+      <button type="submit" name="submit">Sign Up</button>
+      <a href="/login"><button type="button" name="button">Cancel</button></a>
+    </form>
+  </center>
+  </body>
+</html>
